@@ -1,0 +1,56 @@
+seed: 13
+device: cuda
+
+datagen:
+  ds_path: dataset # path to the audio dataset
+  dataset: circor # dataset to work with
+  dir: data # directory to save generated npz data
+
+  sampling_rate: 1000 # sampling rate in Hz
+
+  fold: 10 # number of folds for cross-validation
+  test_split: 0.15 # test split ratio
+
+  clean: true # clean data before generating
+
+tuning:
+  data_dir: data # directory containing the npz data
+  dataset: circor # dataset to train on
+  smote: true # use SMOTE version of the dataset
+  remove_outliers: true # use outlier removal version of the dataset
+
+  trial: 50 # number of trials for tuning
+  epoch: 50 # maximum epochs for each trial
+
+  early_stopping: 10 # early stopping patience for tuning
+
+  clean: false # clean before tuning
+  save_path: tuning
+  record: true # record logs during tuning
+
+run:
+  data_dir: data # directory containing the npz data
+  dataset: circor # dataset to train on
+
+  epoch: 100 # number of epochs
+  batch: 32 # batch size
+  optim: adam # optimizer to use
+  lr: 0.005 # learning rate
+
+  smote: false # use SMOTE for oversampling
+  remove_outliers: false # remove outliers
+
+  callbacks: true # use callbacks during training
+
+  fold: 10 # number of folds for cross-validation
+
+  test_split: 0.1 # test split ratio
+
+  early_stopping: -1 # early stopping patience
+
+  log_dir: logs # directory to save logs
+
+  tflite: true # convert to tflite after training
+  tflite_path: tflite_model
+
+  verbose: true # print detailed logs during training

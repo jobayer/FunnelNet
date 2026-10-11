@@ -1,7 +1,7 @@
 import random
 
 import numpy as np
-from tensorflow.random import set_seed  # type: ignore
+from tensorflow.random import set_seed
 
 
 def manual_seed(seed: int) -> None:
